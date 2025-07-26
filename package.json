@@ -38,12 +38,12 @@
   },
   "strapi": {
     "kind": "plugin",
-    "name": "strapi-plugin-github-actions-dispatch",
+    "name": "github-actions-dispatcher",
     "displayName": "GitHub Actions Dispatcher",
     "description": "A Strapi plugin to dispatch a workflow vian GitHub App"
   },
-  "name": "strapi-plugin-github-actions-dispatch",
-  "description": "A Strapi plugin to dispatch a workflow vian GitHub App",
+  "name": "strapi-plugin-github-actions-dispatcher",
+  "description": "A Strapi plugin to dispatch a workflow via GitHub App",
   "license": "MIT",
   "repository": {
     "type": "git",

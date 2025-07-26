@@ -1,0 +1,57 @@
+{
+  "version": "0.0.0",
+  "keywords": [],
+  "type": "commonjs",
+  "exports": {
+    "./package.json": "./package.json",
+    "./strapi-server": {
+      "types": "./dist/server/src/index.d.ts",
+      "source": "./server/src/index.ts",
+      "import": "./dist/server/index.mjs",
+      "require": "./dist/server/index.js",
+      "default": "./dist/server/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "strapi-plugin build",
+    "watch": "strapi-plugin watch",
+    "watch:link": "strapi-plugin watch:link",
+    "verify": "strapi-plugin verify",
+    "test:ts:back": "run -T tsc -p server/tsconfig.json"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^9.0.2"
+  },
+  "devDependencies": {
+    "@strapi/sdk-plugin": "^5.3.2",
+    "@strapi/strapi": "^5.19.0",
+    "@strapi/typescript-utils": "^5.19.0",
+    "prettier": "^3.6.2",
+    "typescript": "^5.8.3"
+  },
+  "peerDependencies": {
+    "@strapi/sdk-plugin": "^5.3.2",
+    "@strapi/strapi": "^5.19.0"
+  },
+  "strapi": {
+    "kind": "plugin",
+    "name": "strapi-plugin-github-actions-dispatch",
+    "displayName": "GitHub Actions Dispatcher",
+    "description": "A Strapi plugin to dispatch a workflow vian GitHub App"
+  },
+  "name": "strapi-plugin-github-actions-dispatch",
+  "description": "A Strapi plugin to dispatch a workflow vian GitHub App",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kaito-tokyo/strapi-plugin-github-actions-dispatch.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kaito-tokyo/strapi-plugin-github-actions-dispatch/issues"
+  },
+  "homepage": "https://github.com/kaito-tokyo/strapi-plugin-github-actions-dispatch#readme",
+  "author": "Kaito Udagawa <umireon@kaito.tokyo>"
+}

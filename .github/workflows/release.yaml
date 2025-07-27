@@ -6,5 +6,5 @@ on:
       - 'published'
 
 jobs:
-  NpmPublish:
-    uses: './.github/workflows/release-npmjs-publish.yaml'
+  ReleasePublishNpmjs:
+    uses: './.github/workflows/release-publish-npmjs.yaml'

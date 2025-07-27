@@ -24,7 +24,6 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
       exp: now + 10 * 60,
       iss: appId,
     };
-    console.log(privateKey);
     return jwt.sign(payload, privateKey, { algorithm: 'RS256' });
   };
 

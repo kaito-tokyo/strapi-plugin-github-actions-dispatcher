@@ -9,11 +9,11 @@ interface TokenCache {
 let tokenCache: TokenCache | null = null;
 
 export default ({ strapi }: { strapi: Core.Strapi }) => {
-  const owner = strapi.config.get<string>('plugin.my-github-actions-dispatcher.owner');
-  const repo = strapi.config.get<string>('plugin.my-github-actions-dispatcher.repo');
-  const appId = strapi.config.get<string>('plugin.my-github-actions-dispatcher.appId');
-  const installationId = strapi.config.get<string>('plugin.my-github-actions-dispatcher.installationId');
-  const privateKey = strapi.config.get<string>('plugin.my-github-actions-dispatcher.privateKey');
+  const owner = strapi.config.get<string>('plugin::github-actions-dispatcher.owner');
+  const repo = strapi.config.get<string>('plugin::github-actions-dispatcher.repo');
+  const appId = strapi.config.get<string>('plugin::github-actions-dispatcher.appId');
+  const installationId = strapi.config.get<string>('plugin::github-actions-dispatcher.installationId');
+  const privateKey = strapi.config.get<string>('plugin::github-actions-dispatcher.privateKey');
 
   const generateJwt = (): string => {
     const now = Math.floor(Date.now() / 1000);
@@ -22,6 +22,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
       exp: now + (10 * 60),
       iss: appId,
     };
+    console.log(privateKey);
     return jwt.sign(payload, privateKey, { algorithm: 'RS256' });
   };
 
@@ -54,9 +55,9 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
     const newToken = await getInstallationAccessToken();
     tokenCache = {
       token: newToken,
-      expiresAt: Date.now() + (55 * 60 * 1000), 
+      expiresAt: Date.now() + (55 * 60 * 1000),
     };
-    
+
     return tokenCache.token;
   };
 
@@ -64,7 +65,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
   return {
     async triggerDispatch(eventType: string, clientPayload: object = {}) {
       if (!owner || !repo || !appId || !installationId || !privateKey) {
-        strapi.log.error('My GitHub Actions Dispatcher: Plugin is not fully configured for GitHub App.');
+        strapi.log.error('GitHub Actions Dispatcher: Plugin is not fully configured for GitHub App.');
         return { success: false, message: 'Plugin not configured.' };
       }
 

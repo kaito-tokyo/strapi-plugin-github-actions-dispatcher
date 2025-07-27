@@ -1,0 +1,10 @@
+name: 'On release'
+
+on:
+  release:
+    types:
+      - 'published'
+
+jobs:
+  NpmPublish:
+    uses: './.github/workflows/release-npmjs-publish.yaml'

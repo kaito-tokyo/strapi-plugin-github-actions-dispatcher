@@ -9,6 +9,10 @@ jobs:
 
     timeout-minutes: 10
 
+    environment:
+      name: 'production'
+      url: 'https://www.npmjs.com/package/@kaito-tokyo/strapi-plugin-github-actions-dispatcher'
+
     steps:
       - name: 'Checkout'
         uses: 'actions/checkout@v4'

@@ -1,11 +1,11 @@
 on:
   push:
     branches:
-      - "main"
+      - 'main'
   pull_request:
     branches:
-      - "main"
+      - 'main'
 
 jobs:
   PushPrettier:
-    uses: "./.github/workflows/push-prettier.yaml"
+    uses: './.github/workflows/push-prettier.yaml'

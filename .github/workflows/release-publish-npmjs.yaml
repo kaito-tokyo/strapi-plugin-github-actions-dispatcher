@@ -9,6 +9,9 @@ jobs:
 
     timeout-minutes: 10
 
+    permissions:
+      contents: 'read'
+
     environment:
       name: 'production'
       url: 'https://www.npmjs.com/package/@kaito-tokyo/strapi-plugin-github-actions-dispatcher'

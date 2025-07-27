@@ -3,14 +3,14 @@ name: 'Publish to npmjs on release'
 on:
   workflow_call:
 
+permissions:
+  contents: 'read'
+
 jobs:
   PublishNpmjs:
     runs-on: 'ubuntu-24.04'
 
     timeout-minutes: 10
-
-    permissions:
-      contents: 'read'
 
     environment:
       name: 'production'

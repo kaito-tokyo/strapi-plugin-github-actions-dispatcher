@@ -1,5 +1,5 @@
 {
-  "version": "0.0.0",
+  "version": "0.1.0",
   "keywords": [],
   "type": "commonjs",
   "exports": {
@@ -42,7 +42,7 @@
     "displayName": "GitHub Actions Dispatcher",
     "description": "A Strapi plugin to dispatch a workflow vian GitHub App"
   },
-  "name": "strapi-plugin-github-actions-dispatcher",
+  "name": "@kaito-tokyo/strapi-plugin-github-actions-dispatcher",
   "description": "A Strapi plugin to dispatch a workflow via GitHub App",
   "license": "MIT",
   "repository": {

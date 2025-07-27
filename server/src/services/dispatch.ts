@@ -12,14 +12,16 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
   const owner = strapi.config.get<string>('plugin::github-actions-dispatcher.owner');
   const repo = strapi.config.get<string>('plugin::github-actions-dispatcher.repo');
   const appId = strapi.config.get<string>('plugin::github-actions-dispatcher.appId');
-  const installationId = strapi.config.get<string>('plugin::github-actions-dispatcher.installationId');
+  const installationId = strapi.config.get<string>(
+    'plugin::github-actions-dispatcher.installationId'
+  );
   const privateKey = strapi.config.get<string>('plugin::github-actions-dispatcher.privateKey');
 
   const generateJwt = (): string => {
     const now = Math.floor(Date.now() / 1000);
     const payload = {
       iat: now - 60,
-      exp: now + (10 * 60),
+      exp: now + 10 * 60,
       iss: appId,
     };
     console.log(privateKey);
@@ -33,8 +35,8 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
     const response = await fetch(url, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${appJwt}`,
-        'Accept': 'application/vnd.github.v3+json',
+        Authorization: `Bearer ${appJwt}`,
+        Accept: 'application/vnd.github.v3+json',
       },
     });
 
@@ -43,7 +45,7 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
       throw new Error(`Failed to get installation access token: ${response.status} ${errorBody}`);
     }
 
-    const data = await response.json() as any;
+    const data = (await response.json()) as any;
     return data.token;
   };
 
@@ -55,17 +57,18 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
     const newToken = await getInstallationAccessToken();
     tokenCache = {
       token: newToken,
-      expiresAt: Date.now() + (55 * 60 * 1000),
+      expiresAt: Date.now() + 55 * 60 * 1000,
     };
 
     return tokenCache.token;
   };
 
-
   return {
     async triggerDispatch(eventType: string, clientPayload: object = {}) {
       if (!owner || !repo || !appId || !installationId || !privateKey) {
-        strapi.log.error('GitHub Actions Dispatcher: Plugin is not fully configured for GitHub App.');
+        strapi.log.error(
+          'GitHub Actions Dispatcher: Plugin is not fully configured for GitHub App.'
+        );
         return { success: false, message: 'Plugin not configured.' };
       }
 
@@ -78,8 +81,8 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
         const response = await fetch(url, {
           method: 'POST',
           headers: {
-            'Authorization': `Bearer ${authToken}`,
-            'Accept': 'application/vnd.github.v3+json',
+            Authorization: `Bearer ${authToken}`,
+            Accept: 'application/vnd.github.v3+json',
             'Content-Type': 'application/json',
           },
           body: JSON.stringify({
@@ -95,7 +98,6 @@ export default ({ strapi }: { strapi: Core.Strapi }) => {
 
         strapi.log.info(`Successfully triggered GitHub Action for event: ${eventType}`);
         return { success: true, message: `Dispatch event '${eventType}' sent successfully.` };
-
       } catch (error) {
         strapi.log.error('Failed to trigger GitHub Action dispatch.');
         if (error instanceof Error) {

@@ -1,5 +1,8 @@
 name: 'Publish to npmjs on release'
 
+permissions:
+  contents: 'read'
+
 on:
   workflow_call:
     secrets:

@@ -1,5 +1,8 @@
 name: 'Verify on push'
 
+permissions:
+  contents: 'read'
+
 on:
   workflow_call:
 

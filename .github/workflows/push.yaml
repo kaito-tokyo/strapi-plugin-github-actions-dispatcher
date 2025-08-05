@@ -1,6 +1,7 @@
 name: 'On push'
+
 permissions:
-  contents: read
+  contents: 'read'
 
 on:
   push:

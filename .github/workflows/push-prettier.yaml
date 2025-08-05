@@ -1,5 +1,8 @@
 name: 'Prettier on push'
 
+permissions:
+  contents: 'read'
+
 on:
   workflow_call:
 

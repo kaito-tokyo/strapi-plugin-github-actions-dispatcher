@@ -1,5 +1,5 @@
 {
-  "version": "0.1.5",
+  "version": "0.1.6",
   "keywords": [],
   "type": "commonjs",
   "exports": {
@@ -47,7 +47,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/kaito-tokyo/strapi-plugin-github-actions-dispatch.git"
+    "url": "https://github.com/kaito-tokyo/strapi-plugin-github-actions-dispatcher"
   },
   "bugs": {
     "url": "https://github.com/kaito-tokyo/strapi-plugin-github-actions-dispatch/issues"

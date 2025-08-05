@@ -4,13 +4,9 @@ permissions:
   contents: 'read'
 
 on:
-  workflow_call:
-    secrets:
-      NPM_TOKEN:
-        required: true
-
-permissions:
-  contents: 'read'
+  release:
+    types:
+      - 'published'
 
 jobs:
   PublishNpmjs:

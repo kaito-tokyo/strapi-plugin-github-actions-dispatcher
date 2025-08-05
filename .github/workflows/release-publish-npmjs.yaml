@@ -1,13 +1,12 @@
 name: 'Publish to npmjs on release'
 
-on:
-  workflow_call:
-    secrets:
-      NPM_TOKEN:
-        required: true
-
 permissions:
   contents: 'read'
+
+on:
+  release:
+    types:
+      - 'published'
 
 jobs:
   PublishNpmjs:

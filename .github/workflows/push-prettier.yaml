@@ -1,11 +1,14 @@
 name: 'Prettier on push'
 
+permissions:
+  contents: 'read'
+
 on:
   workflow_call:
 
 jobs:
   Prettier:
-    runs-on: 'ubuntu-latest'
+    runs-on: 'ubuntu-24.04'
 
     timeout-minutes: 10
 

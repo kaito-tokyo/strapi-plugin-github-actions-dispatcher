@@ -50,8 +50,8 @@
     "url": "https://github.com/kaito-tokyo/strapi-plugin-github-actions-dispatcher"
   },
   "bugs": {
-    "url": "https://github.com/kaito-tokyo/strapi-plugin-github-actions-dispatch/issues"
+    "url": "https://github.com/kaito-tokyo/strapi-plugin-github-actions-dispatcher/issues"
   },
-  "homepage": "https://github.com/kaito-tokyo/strapi-plugin-github-actions-dispatch#readme",
+  "homepage": "https://github.com/kaito-tokyo/strapi-plugin-github-actions-dispatcher#readme",
   "author": "Kaito Udagawa <umireon@kaito.tokyo>"
 }
